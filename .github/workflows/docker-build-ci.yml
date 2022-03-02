@@ -8,5 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Skip workflow
-      run: echo 'skip this workflow'
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile
