@@ -1,8 +1,8 @@
 FROM node:14.18.1-buster
 
 LABEL version="1.2.2"
-LABEL repository="https://github.com/ikhsan/firebase-action"
-LABEL homepage="https://github.com/ikhsan/firebase-action"
+LABEL repository="https://github.com/eggalus/firebase-action"
+LABEL homepage="https://github.com/eggalus/firebase-action"
 
 LABEL com.github.actions.name="GitHub Action for Firebase - ixn"
 LABEL com.github.actions.description="Wraps the firebase-tools CLI to enable common commands."
@@ -15,7 +15,7 @@ RUN add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
 RUN apt update && apt install -y jq adoptopenjdk-8-hotspot-jre git && apt autoremove --purge -y && apt clean -y
 
 RUN npm i -g npm@7.19.1
-RUN npm i -g firebase-tools@9.21.0
+RUN npm i -g firebase-tools@10.4.0
 
 COPY LICENSE README.md /
 COPY "entrypoint.sh" "/entrypoint.sh"
