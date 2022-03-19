@@ -17,7 +17,9 @@ if [ -n "$GCP_SA_KEY" ]; then
   fi
 
   echo "Exporting GOOGLE_APPLICATION_CREDENTIALS=/opt/gcp_key.json"
-  export GOOGLE_APPLICATION_CREDENTIALS=$(cat /opt/gcp_key.json)
+  export GOOGLE_APPLICATION_CREDENTIALS="/opt/gcp_key.json"
+  cat /opt/gcp_key.json
+  firebase projects:list
 fi
 
 if [ -n "$PROJECT_PATH" ]; then
@@ -29,4 +31,4 @@ if [ -n "$PROJECT_ID" ]; then
     firebase use --add "$PROJECT_ID"
 fi
 
-sh -c "firebase $*"
+GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS sh -c "firebase $*"
